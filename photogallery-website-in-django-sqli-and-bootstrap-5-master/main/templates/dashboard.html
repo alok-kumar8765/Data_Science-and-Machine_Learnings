@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+    <div class="container my-5">
+      <h3 class="my-3"><span class="text-danger">Dashboard</h3>
+      <div class="row">
+          <div class="col-md-3">
+            <div class="card">
+              <h5 class="card-header">Albums</h5>
+              <div class="card-body">
+                <h6><a href="{% url 'user-albums' %}">{{totalAlbums}}</a></h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card">
+              <h5 class="card-header">Photos</h5>
+              <div class="card-body">
+                <h6>{{totalPhotos}}</h6>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+</main>
+{% endblock %}

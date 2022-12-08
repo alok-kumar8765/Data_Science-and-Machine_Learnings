@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+    <div class="container my-5">
+      <h3 class="my-3"><span class="text-danger">Album List <a href="{% url 'add-album' %}" class="btn btn-success btn-sm">Add Album</a></h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>AlbumName</th>
+            <th>TotalPhotos</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% if data %}
+            {% for album in data %}
+            <tr>
+              <td>{{forloop.counter}}</td>
+              <td>{{album.title}}</td>
+              <td><a href="{% url 'photo_list' album.id %}" class="btn btn-sm btn-dark">{{album.total_photos}}</a></td>
+              <td>
+                <a href="{% url 'update-album' album.id %}" class="btn btn-sm btn-info">Edit</a>
+                <a class="btn btn-sm btn-danger" onclick="return confirm('Are you sure you want to delete this album, it will also delete all photos of this album?')" href="{% url 'delete-album' album.id %}">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          {% endif %}
+        </tbody>
+      </table>
+    </div>
+</main>
+{% endblock %}
